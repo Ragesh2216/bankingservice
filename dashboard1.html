@@ -61,50 +61,56 @@
 
 <body>
 
-<!-- HERO -->
-<section class="dash-hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <h1>Dashboard Overview</h1>
-        <p>Track your spending  • Monitor your card usage</p>
-    </div>
-</section>
 
-<!-- DASHBOARD CARDS -->
-<section class="summary-cards">
-    <div class="card">
-        <h3>Total Spent</h3>
-        <p>₹57,500</p>
-    </div>
+  <!-- Background wrapper -->
+  <div class="dashboard-container">
 
-    <div class="card">
-        <h3>Available Limit</h3>
-        <p>₹1,42,500</p>
-    </div>
+    <header class="dashboard-header">
+      <h1>Banking Dashboard</h1>
+      <p>Track your finances, accounts, and transactions</p>
+    </header>
 
-    <div class="card">
-        <h3>Monthly Bills</h3>
-        <p>₹12,840</p>
-    </div>
-</section>
+    <!-- CARDS SECTION -->
+    <section class="cards-section">
+      <div class="card">
+        <h3>Total Balance</h3>
+        <p>₹ 7,45,000</p>
+      </div>
 
-<!-- CHART SECTION -->
-<section class="charts">
+      <div class="card">
+        <h3>Savings Account</h3>
+        <p>₹ 3,30,000</p>
+      </div>
 
-    <div class="chart-box">
-        <h2>Monthly Spending (Bar Chart)</h2>
+      <div class="card">
+        <h3>Current Account</h3>
+        <p>₹ 95,000</p>
+      </div>
+
+      <div class="card">
+        <h3>Fixed Deposits</h3>
+        <p>₹ 20,000</p>
+      </div>
+    </section>
+
+    <!-- CHARTS SECTION -->
+    <section class="charts-section">
+
+      <!-- BAR CHART -->
+      <div class="chart-box">
+        <h3>Monthly Transactions</h3>
         <canvas id="barChart"></canvas>
-    </div>
+      </div>
 
-    <div class="chart-box">
-        <h2>Expense Category (Pie Chart)</h2>
+      <!-- PIE CHART -->
+      <div class="chart-box">
+        <h3>Expense Breakdown</h3>
         <canvas id="pieChart"></canvas>
-    </div>
+      </div>
 
-    <div class="chart-box">
-        <h2>Weekly Usage Trend (Line Graph)</h2>
-        <canvas id="lineChart"></canvas>
-    </div>
+    </section>
+
+  </div>
 
 </section>
 <!-- <footer> -->
