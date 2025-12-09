@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! 404 Page Not Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 400% 400%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Background Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
+            padding: 30px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 404 Number Animation */
+        .error-number {
+            font-size: clamp(120px, 25vw, 200px);
+            font-weight: 900;
+            margin-bottom: -30px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .number-box {
+            display: inline-block;
+            position: relative;
+        }
+
+        .number-box span {
+            display: block;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff9966);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 10px 30px rgba(255, 65, 108, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .number-box:nth-child(1) span { animation-delay: 0s; }
+        .number-box:nth-child(2) span { animation-delay: 0.5s; }
+        .number-box:nth-child(3) span { animation-delay: 1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        /* Title */
+        .title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 20px 0;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #a8d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Description */
+        .description {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Robot Animation */
+        .robot-container {
+            margin: 40px auto;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            animation: robotFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes robotFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(3deg); }
+            75% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        .robot {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #4a00e0, #8e2de2);
+            border-radius: 50% 50% 40% 40%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .robot-eye {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            top: 40px;
+            animation: blink 4s infinite;
+        }
+
+        .robot-eye.left { left: 30px; }
+        .robot-eye.right { right: 30px; }
+
+        @keyframes blink {
+            0%, 45%, 55%, 100% { height: 30px; }
+            50% { height: 5px; }
+        }
+
+        .robot-mouth {
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: white;
+            border-radius: 10px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: mouthMove 3s infinite;
+        }
+
+        @keyframes mouthMove {
+            0%, 100% { width: 40px; }
+            50% { width: 60px; }
+        }
+
+        /* Search Box */
+        .search-container {
+            max-width: 500px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 18px 50px 18px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-box:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ff416c;
+            box-shadow: 0 10px 30px rgba(255, 65, 108, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 65, 108, 0.4);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: none;
+        }
+
+        .primary-btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            box-shadow: 0 15px 35px rgba(255, 65, 108, 0.3);
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 160px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: #ff9966;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            max-width: 300px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            border-radius: 10px;
+            width: 0%;
+            animation: progressLoad 2s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            100% { width: 88%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 140px;
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .search-box {
+                padding: 15px 45px 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .robot-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .robot {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-number {
+                font-size: clamp(80px, 20vw, 120px);
+                margin-bottom: -20px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                gap: 10px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .action-btn {
+                padding: 14px 25px;
+                font-size: 1rem;
+                min-width: 180px;
+            }
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            font-size: 0.9rem;
+            color: #ff9966;
+            margin-top: 10px;
+            animation: pulse 1s infinite;
+        }
+
+        /* Success Animation */
+        .success-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .success-animation.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .success-check {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-check i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .success-message {
+            font-size: 1.5rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="success-check">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="success-message">
+            Redirecting you home...
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Robot -->
+        <div class="robot-container">
+            <div class="robot">
+                <div class="robot-eye left"></div>
+                <div class="robot-eye right"></div>
+                <div class="robot-mouth"></div>
+            </div>
+        </div>
+
+        <!-- 404 Number -->
+        <div class="error-number">
+            <div class="number-box"><span>4</span></div>
+            <div class="number-box"><span>0</span></div>
+            <div class="number-box"><span>4</span></div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="title">Oops! Page Lost in Space</h1>
+
+        <!-- Description -->
+        <p class="description">
+            The page you're looking for has drifted into the digital cosmos. 
+            Don't worry, our friendly robot is here to help you find your way back!
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search for pages or help..." id="searchInput">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="loading" id="loading">Searching...</div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="errorCount">0</div>
+                <div class="stat-label">Error Code</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="foundPages">0%</div>
+                <div class="stat-label">Pages Found</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="responseTime">0s</div>
+                <div class="stat-label">Response Time</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn primary-btn" id="homeBtn">
+                <i class="fas fa-home"></i>
+                Return Home
+            </button>
+            <button class="action-btn secondary-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i>
+                Go Back
+            </button>
+            <button class="action-btn secondary-btn" id="helpBtn">
+                <i class="fas fa-headset"></i>
+                Get Help
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Digital Universe. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">
+                    <i class="fas fa-shield-alt"></i>
+                    Privacy
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fas fa-file-contract"></i>
+                    Terms
+                </a>
+                <a href="mailto:help@digitaluniverse.com" class="footer-link">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fas fa-question-circle"></i>
+                    Support
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            animateStats();
+            setupEventListeners();
+        });
+
+        // Create background stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = window.innerWidth < 768 ? 50 : 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = Math.random() * 3 + 2;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Animate statistics
+        function animateStats() {
+            // Error count animation
+            const errorCount = document.getElementById('errorCount');
+            let count = 0;
+            const errorInterval = setInterval(() => {
+                count += 10;
+                errorCount.textContent = count;
+                if (count >= 404) {
+                    clearInterval(errorInterval);
+                    errorCount.textContent = '404';
+                }
+            }, 20);
+
+            // Found pages animation
+            const foundPages = document.getElementById('foundPages');
+            let percentage = 0;
+            const pageInterval = setInterval(() => {
+                percentage += 1.1;
+                foundPages.textContent = Math.min(percentage, 99.9).toFixed(1) + '%';
+                if (percentage >= 99.9) {
+                    clearInterval(pageInterval);
+                }
+            }, 20);
+
+            // Response time animation
+            const responseTime = document.getElementById('responseTime');
+            let time = 0;
+            const timeInterval = setInterval(() => {
+                time += 0.02;
+                responseTime.textContent = time.toFixed(2) + 's';
+                if (time >= 0.24) {
+                    clearInterval(timeInterval);
+                    responseTime.textContent = '0.24s';
+                }
+            }, 30);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Home button
+            document.getElementById('homeBtn').addEventListener('click', function() {
+                showSuccessAnimation();
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            });
+
+            // Back button
+            document.getElementById('backBtn').addEventListener('click', function() {
+                if (document.referrer) {
+                    showSuccessAnimation();
+                    setTimeout(() => {
+                        window.history.back();
+                    }, 1500);
+                } else {
+                    showMessage('No previous page found. Try going home instead.');
+                }
+            });
+
+            // Help button
+            document.getElementById('helpBtn').addEventListener('click', function() {
+                showMessage('Help is on the way! Contact support@digitaluniverse.com');
+            });
+
+            // Search button
+            document.getElementById('searchBtn').addEventListener('click', handleSearch);
+            
+            // Enter key in search
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+        }
+
+        // Handle search functionality
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const loading = document.getElementById('loading');
+            const query = searchInput.value.trim();
+            
+            if (!query) {
+                // Shake animation for empty search
+                searchInput.classList.add('shake');
+                setTimeout(() => {
+                    searchInput.classList.remove('shake');
+                }, 500);
+                return;
+            }
+            
+            // Show loading
+            loading.style.display = 'block';
+            searchBtn.disabled = true;
+            searchInput.disabled = true;
+            
+            // Simulate search
+            setTimeout(() => {
+                loading.style.display = 'none';
+                searchBtn.disabled = false;
+                searchInput.disabled = false;
+                
+                if (query.toLowerCase().includes('home') || query.toLowerCase().includes('index')) {
+                    showSuccessAnimation();
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    showMessage(`No results found for "${query}". Try "home" or "index"`);
+                    searchInput.value = '';
+                    searchInput.focus();
+                }
+            }, 1500);
+        }
+
+        // Show success animation
+        function showSuccessAnimation() {
+            const successAnimation = document.getElementById('successAnimation');
+            successAnimation.classList.add('show');
+            
+            // Add confetti effect
+            createConfetti();
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#ff416c', '#ff4b2b', '#ff9966', '#4a00e0', '#8e2de2'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.zIndex = '1001';
+                confetti.style.opacity = '0.8';
+                
+                document.body.appendChild(confetti);
+                
+                // Animate confetti
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Remove confetti after animation
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Show message
+        function showMessage(message) {
+            // Create message element
+            const messageEl = document.createElement('div');
+            messageEl.style.position = 'fixed';
+            messageEl.style.top = '20px';
+            messageEl.style.left = '50%';
+            messageEl.style.transform = 'translateX(-50%)';
+            messageEl.style.backgroundColor = 'rgba(255, 107, 107, 0.9)';
+            messageEl.style.color = 'white';
+            messageEl.style.padding = '15px 25px';
+            messageEl.style.borderRadius = '10px';
+            messageEl.style.zIndex = '1000';
+            messageEl.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+            messageEl.style.backdropFilter = 'blur(10px)';
+            messageEl.textContent = message;
+            
+            document.body.appendChild(messageEl);
+            
+            // Animate message
+            messageEl.animate([
+                { opacity: 0, transform: 'translateX(-50%) translateY(-20px)' },
+                { opacity: 1, transform: 'translateX(-50%) translateY(0)' }
+            ], {
+                duration: 300,
+                easing: 'ease-out'
+            });
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                messageEl.animate([
+                    { opacity: 1, transform: 'translateX(-50%) translateY(0)' },
+                    { opacity: 0, transform: 'translateX(-50%) translateY(-20px)' }
+                ], {
+                    duration: 300,
+                    easing: 'ease-in'
+                }).onfinish = () => messageEl.remove();
+            }, 3000);
+        }
+
+        // Robot interaction
+        const robot = document.querySelector('.robot');
+        robot.addEventListener('click', function() {
+            showMessage('Beep boop! I\'m here to help! 🤖');
+            
+            // Make robot jump
+            robot.style.animation = 'none';
+            setTimeout(() => {
+                robot.style.animation = 'robotFloat 6s ease-in-out infinite';
+            }, 10);
+        });
+    </script>
+</body>
+</html>
